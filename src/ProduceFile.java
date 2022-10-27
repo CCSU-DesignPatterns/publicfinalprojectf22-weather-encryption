@@ -39,10 +39,12 @@ public class ProduceFile {
         HttpResponse<String> getResponse = httpClient.send(getRequest, BodyHandlers.ofString());
 
         this.response = getResponse.body();
+        System.out.print(response);
     }
 
     // This will get the file name and the response that was given to then write it
     // to a file and then encrypt that file
+
     public void encryptToFile(String fileName) throws IOException {
         FileWriter fileWriter = new FileWriter(fileName);
         PrintWriter printWriter = new PrintWriter(fileWriter);
@@ -53,12 +55,12 @@ public class ProduceFile {
     }
 
     // Returns the response in string format
-    public String getHttpResponse() {
+    public String getResponse() {
         return this.response;
     }
 
     // Returns the generated password as a stirng
-    public String getEncryption() {
+    public String getPassword() {
         return password;
     }
 }
