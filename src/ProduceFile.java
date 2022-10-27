@@ -1,7 +1,9 @@
 package src;
 // This is a singleton class so that only one instance of this class is ever created and is in use
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.http.HttpClient;
@@ -15,8 +17,7 @@ public class ProduceFile {
 
     // This will create an instance of itself
     private static ProduceFile instance = new ProduceFile();
-    private String password, apiCall;
-    HttpResponse<String> getResponse;
+    private String password, response;
 
     private ProduceFile() {
 
@@ -35,11 +36,25 @@ public class ProduceFile {
 
         HttpClient httpClient = HttpClient.newHttpClient();
 
-        this.getResponse = httpClient.send(getRequest, BodyHandlers.ofString());
+        HttpResponse<String> getResponse = httpClient.send(getRequest, BodyHandlers.ofString());
+
+        this.response = getResponse.body();
     }
 
-    public HttpResponse<String> getJson() {
-        return this.getResponse;
+    // This will get the file name and the response that was given to then write it
+    // to a file and then encrypt that file
+    public void encryptToFile(String fileName) throws IOException {
+        FileWriter fileWriter = new FileWriter(fileName);
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+        printWriter.print(response);
+        printWriter.close();
+
+        /// will encrypt file
+    }
+
+    // Returns the response in string format
+    public String getHttpResponse() {
+        return this.response;
     }
 
     // Returns the generated password as a stirng
