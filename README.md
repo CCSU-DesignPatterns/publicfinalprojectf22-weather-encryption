@@ -1,11 +1,29 @@
 # Encription API
 
-This API can be used to encript a string using the encription algorithm of your choice from the implemented list below.
+This API can be used to encrypt a string using the encryption algorithm of your choice from the implemented list below.
 
-Encription Algorithms to choose from
+Encryption Algorithms to choose from
 
-- Choice 1
-- Choice 2
-- Choice 3
+- AES (Default)
+- RSA (Coming soon)
+- DES (Coming soon)
 
-You can use this by first creating an instance of
+You can use this by first creating an instance of the class with
+
+```
+Encrypt enc = Encrypt.getInstance();
+```
+
+then you can encrypt and decrypt
+
+```
+String source = "Here is some string";
+System.out.println(source);
+String password = "p@ssW0rd";
+
+String encryptString = enc.encrypt(source, password);
+System.out.println(encryptString);
+
+String decrypString = enc.decrypt(encryptString, password);
+System.out.println(decrypString);
+```
