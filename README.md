@@ -1,3 +1,4 @@
+
 # Encription API
 
 This API can be used to encrypt a string using the encryption algorithm of your choice from the implemented list below.
