@@ -2,15 +2,7 @@ package src;
 // This is a singleton class so that only one instance of this class is ever created and is in use
 
 import java.nio.charset.Charset;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
 import java.util.Random;
-
-import javax.crypto.BadPaddingException;
-import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.IvParameterSpec;
 
@@ -50,9 +42,7 @@ public class Encrypt {
 
     // This will encrypt the source using the given password
     public String encrypt(String source, String password)
-            throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException,
-            InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException,
-            InvalidKeySpecException {
+            throws Exception {
         saveSource(source);
         savePassword(password);
 
@@ -67,9 +57,7 @@ public class Encrypt {
     }
 
     // This method can encrypt the source and generate a password
-    public String encrypt(String source) throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException,
-            InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException,
-            InvalidKeySpecException {
+    public String encrypt(String source) throws Exception {
         saveSource(source);
         generatePassword();
 
@@ -84,9 +72,7 @@ public class Encrypt {
     }
 
     public String decrypt(String source, String password)
-            throws InvalidKeyException, NoSuchPaddingException, NoSuchAlgorithmException,
-            InvalidAlgorithmParameterException, BadPaddingException, IllegalBlockSizeException,
-            InvalidKeySpecException {
+            throws Exception {
 
         String salt = "Salt";
 
