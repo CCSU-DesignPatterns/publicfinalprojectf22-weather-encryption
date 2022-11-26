@@ -1,14 +1,30 @@
-# publicfinalprojectf22-weather-encryption
-publicfinalprojectf22-weather-encryption created by GitHub Classroom
 
+# Encription API
 
-# About
+This API can be used to encrypt a string using the encryption algorithm of your choice from the implemented list below.
 
-This API can be used to Encrypt a string and get back a key
+Encryption Algorithms to choose from
 
-Our API will take in a string to encrypt. Then send that to an encryped file.
-You will be able to choose what kind of encryption you would like to use in the case you want to decript later.
+- AES (Default)
+- RSA (Coming soon)
+- DES (Coming soon)
 
-A list of popular encrypting algorithms will be listed...
+You can use this by first creating an instance of the class with
 
-It will then return a string thats going to be the password.
+```
+Encrypt enc = Encrypt.getInstance();
+```
+
+then you can encrypt and decrypt
+
+```
+String source = "Here is some string";
+System.out.println(source);
+String password = "p@ssW0rd";
+
+String encryptString = enc.encrypt(source, password);
+System.out.println(encryptString);
+
+String decrypString = enc.decrypt(encryptString, password);
+System.out.println(decrypString);
+```
