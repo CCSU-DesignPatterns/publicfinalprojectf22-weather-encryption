@@ -9,7 +9,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
-public class Encryption {
+public abstract Encryption {
 
     private static SecretKeyFactory factory;
 
@@ -37,13 +37,9 @@ public class Encryption {
     }
 
     public static String encrypt(String algorithm, String input, SecretKey key,
-            IvParameterSpec iv) {
-        return "";
-    }
+            IvParameterSpec iv);
 
     public static String decrypt(String algorithm, String cipherText, SecretKey key,
-            IvParameterSpec iv) {
-        return "";
-    }
+            IvParameterSpec iv);
 
 }
